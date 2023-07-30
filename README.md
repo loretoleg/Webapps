@@ -1,4 +1,4 @@
-My program is a serverless AWS Lambda function that generates a customized report for a given cistern (storage container) based on data provided in an Excel file. The function is triggered by an HTTP request containing JSON data with relevant parameters, such as the recipient email, cistern number, and the type of report to be generated.
+My program is a serverless AWS Lambda function that generates a customized report for a given cistern (storage container) based on data provided in an Excel file. The function is triggered by an HTTP request containing JSON data with relevant parameters, such as the recipient email, cistern number, and the type of report to be generated. This is the continuation of https://github.com/loretoleg/Code
 
 Here's a brief description of the program's functionality:
 
