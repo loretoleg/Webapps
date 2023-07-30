@@ -66,17 +66,17 @@ def lambda_handler(event, context):
 
       # Cantidad Recibida por 'Company A'
       rec_psa = df[(df['CISTERNA']==num_cisterna) & (df['TRANSACCIÓN']=='Recibido')]\
-      .groupby('FECHA').sum()['CANTIDAD LITROS'].to_frame(name=f'Cantidad Recibida por {Comp_A}')
+      .groupby('FECHA').sum(numeric_only=True)['CANTIDAD LITROS'].to_frame(name=f'Cantidad Recibida por {Comp_A}')
 
       # Cantidad Despachada por Personal de 'Company A' (A)
       dsp_psa = df[(df['CISTERNA']==num_cisterna) & (df['TRANSACCIÓN']=='Despachado')\
                   & (df['BENEFICIARIO']!=f'{Comp_B}')].groupby('FECHA')\
-                  .sum()['CANTIDAD LITROS'].to_frame(name=f'Cantidad Despachada por Personal de {Comp_A} (A)')
+                  .sum(numeric_only=True)['CANTIDAD LITROS'].to_frame(name=f'Cantidad Despachada por Personal de {Comp_A} (A)')
 
 
       # Cantidad Despachada por Personal de 'Company B' (B)
       dsp_psb = df[(df['CISTERNA']==num_cisterna) & (df['TRANSACCIÓN']=='Despachado')\
-                  & (df['BENEFICIARIO']==f'{Comp_B}')].groupby('FECHA').sum()['CANTIDAD LITROS']\
+                  & (df['BENEFICIARIO']==f'{Comp_B}')].groupby('FECHA').sum(numeric_only=True)['CANTIDAD LITROS']\
                   .to_frame(name=f'Cantidad Despachada por Personal de {Comp_B} (B)')
 
       # Create Report DF
